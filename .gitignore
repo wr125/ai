@@ -1,0 +1,5 @@
+tmp
+bin
+.env
+app_data.db
+fly.toml
