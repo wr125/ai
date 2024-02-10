@@ -71,7 +71,7 @@ func (us *UserServices) CheckEmail(email string) (User, error) {
 	return us.User, nil
 }
 
-/* func (us *UserServices) GetUserById(id int) (User, error) {
+func (us *UserServices) GetUserById(id int) (User, error) {
 
 	query := `SELECT id, email, password, username FROM users
 		WHERE id = ?`
@@ -97,4 +97,4 @@ func (us *UserServices) CheckEmail(email string) (User, error) {
 	}
 
 	return us.User, nil
-} */
+}

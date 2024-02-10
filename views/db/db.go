@@ -11,6 +11,44 @@ import (
 type Store struct {
 	Db *sql.DB
 }
+type User struct {
+	ID       int    `json:"id"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+	Username string `json:"username"`
+}
+
+type UserServices struct {
+	User      User
+	UserStore *sql.DB
+}
+
+func (us *UserServices) GetUserById(id int) (User, error) {
+	query := `SELECT id, email, password, username FROM users
+	WHERE id = ?`
+
+	stmt, err := us.UserStore.Prepare(query)
+	if err != nil {
+		return User{}, err
+	}
+
+	defer stmt.Close()
+
+	us.User.ID = id
+	err = stmt.QueryRow(
+		us.User.ID,
+	).Scan(
+		&us.User.ID,
+		&us.User.Email,
+		&us.User.Password,
+		&us.User.Username,
+	)
+	if err != nil {
+		return User{}, err
+	}
+
+	return us.User, nil
+}
 
 func NewStore(templdb string) (Store, error) {
 	Db, err := getConnection(templdb)

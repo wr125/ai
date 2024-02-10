@@ -23,19 +23,19 @@ func Navbar(username string, fromProtected bool) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"navbar bg-black text-primary-content fixed top-0 z-10\"><div class=\"navbar-start\"><a hx-swap=\"transition:true\" class=\"btn btn-ghost text-xl\" href=\"/\">Todo List</a></div><div class=\"navbar-end\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"navbar bg-black text-primary-content fixed top-0 z-10\"><div class=\"navbar-start\"><!--href=\"/\"--><a hx-swap=\"transition:true\" class=\"btn btn-ghost text-xl\"></a></div><div class=\"navbar-end\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if fromProtected {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"font-bold text-ghost-700 mr-8\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!-- from here --> <div class=\"drawer\"><input id=\"my-drawer\" type=\"checkbox\" class=\"drawer-toggle\"><div class=\"drawer-content\"><!-- Page content here --><label for=\"my-drawer\" class=\"btn btn-ghost drawer-button\">Menu</label></div><span class=\"material-icons\">menu</span><div class=\"drawer-side\"><label for=\"my-drawer\" aria-label=\"close sidebar\" class=\"drawer-overlay\"></label><ul class=\"menu p-4 w-80 min-h-full bg-base-200 text-base-content\"><!-- Sidebar content here --><li><a href=\"haircut\">Haircut Type</a></li><li><a href=\"update\">Software Update</a></li><li><a href=\"registration\">Registration</a></li><li><a href=\"device\">Device Selected</a></li><li><a href=\"subcription\">Subcription</a></li><li><a href=\"data\">Data</a></li></ul></div></div><!-- end --> <span class=\"font-bold text-ghost-700 mr-8\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(username)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views\partials\navbar.partial.templ`, Line: 12, Col: 15}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views\partials\navbar.partial.templ`, Line: 34, Col: 15}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {

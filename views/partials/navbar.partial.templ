@@ -2,13 +2,35 @@ package partials
 
 templ Navbar(username string, fromProtected bool) {
 	<nav class="navbar bg-black text-primary-content fixed top-0 z-10">
-		<div class="navbar-start">
-			<a hx-swap="transition:true" class="btn btn-ghost text-xl" href="/">
-				Todo List
+		<div class="navbar-start">									<!--href="/"-->
+			<a hx-swap="transition:true" class="btn btn-ghost text-xl" >		
 			</a>
 		</div>
 		<div class="navbar-end">
 			if fromProtected {
+		<!-- from here -->
+		<div class="drawer">
+  <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <!-- Page content here -->
+   		 <label for="my-drawer" class="btn btn-ghost drawer-button">Menu</label>
+  </div><span class="material-icons">menu</span>
+
+   	<div class="drawer-side">
+   		 <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+    <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+      <!-- Sidebar content here -->
+      <li><a href="haircut">Haircut Type</a></li>
+      <li><a href="update">Software Update</a></li>
+      <li><a href="registration">Registration</a></li>
+      <li><a href="device">Device Selected</a></li>
+	  <li><a href="subcription">Subcription</a></li>
+      <li><a href="data">Data</a></li>
+    </ul>
+  </div>
+</div>
+<!-- end -->
+		
 				<span class="font-bold text-ghost-700 mr-8">
 					{ username }
 				</span>

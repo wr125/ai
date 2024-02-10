@@ -8,8 +8,8 @@ import (
 
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
+	"github.com/wr125/ai/views/internal_views"
 	"github.com/wr125/ai/views/services"
-	"github.com/wr125/ai/views/todo_views"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 )
@@ -35,6 +35,31 @@ type TaskHandler struct {
 	TodoServices TaskService
 }
 
+func (th *TaskHandler) haircutTypeHandler(c echo.Context) error {
+	isError = false
+	userId := c.Get(user_id_key).(int)
+
+	todos, err := th.TodoServices.GetAllTodos(userId)
+	if err != nil {
+		return err
+	}
+
+	titlePage := fmt.Sprintf(
+		"| %s's Task List",
+		cases.Title(language.English).String(c.Get(username_key).(string)),
+	)
+
+	return renderView(c, internal_views.TodoIndex(
+		titlePage,
+		c.Get(username_key).(string),
+		fromProtected,
+		isError,
+		getFlashmessages(c, "error"),
+		getFlashmessages(c, "success"),
+		internal_views.TodoList(titlePage, todos),
+	))
+}
+
 func (th *TaskHandler) createTodoHandler(c echo.Context) error {
 	isError = false
 
@@ -55,14 +80,14 @@ func (th *TaskHandler) createTodoHandler(c echo.Context) error {
 		return c.Redirect(http.StatusSeeOther, "/todo/list")
 	}
 
-	return renderView(c, todo_views.TodoIndex(
+	return renderView(c, internal_views.TodoIndex(
 		"| Create Todo",
 		c.Get(username_key).(string),
 		fromProtected,
 		isError,
 		getFlashmessages(c, "error"),
 		getFlashmessages(c, "success"),
-		todo_views.CreateTodo(),
+		internal_views.CreateTodo(),
 	))
 }
 
@@ -80,14 +105,14 @@ func (th *TaskHandler) todoListHandler(c echo.Context) error {
 		cases.Title(language.English).String(c.Get(username_key).(string)),
 	)
 
-	return renderView(c, todo_views.TodoIndex(
+	return renderView(c, internal_views.TodoIndex(
 		titlePage,
 		c.Get(username_key).(string),
 		fromProtected,
 		isError,
 		getFlashmessages(c, "error"),
 		getFlashmessages(c, "success"),
-		todo_views.TodoList(titlePage, todos),
+		internal_views.TodoList(titlePage, todos),
 	))
 }
 
@@ -150,14 +175,14 @@ func (th *TaskHandler) updateTodoHandler(c echo.Context) error {
 		return c.Redirect(http.StatusSeeOther, "/todo/list")
 	}
 
-	return renderView(c, todo_views.TodoIndex(
+	return renderView(c, internal_views.TodoIndex(
 		fmt.Sprintf("| Edit Todo #%d", todo.ID),
 		c.Get(username_key).(string),
 		fromProtected,
 		isError,
 		getFlashmessages(c, "error"),
 		getFlashmessages(c, "success"), // ↓ getting time zone from context ↓
-		todo_views.UpdateTodo(todo, c.Get(tzone_key).(string)),
+		internal_views.UpdateTodo(todo, c.Get(tzone_key).(string)),
 	))
 }
 

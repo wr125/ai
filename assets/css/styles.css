@@ -43,3 +43,6 @@ body {
 .sample-transition {
     view-transition-name: slide-it;
 }
+.material-icons{
+padding-top: 1%;
+}

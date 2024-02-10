@@ -1,6 +1,6 @@
 package auth_views
 
-import "github.com/wr125/fullstack/views/layout"
+import "github.com/wr125/ai/views/layout"
 
 templ Home(fromProtected bool) {
 	<section class="mx-auto w-fit flex flex-col gap-8 text-center">
@@ -15,7 +15,7 @@ templ Home(fromProtected bool) {
 				<a
  					hx-swap="transition:true"
  					href="/login"
- 					class="badge badge-primary px-6 py-4 hover:scale-[1.1] text-lg font-thin"
+ 					class="badge badge-neutral px-6 py-4 hover:scale-[1.1] text-lg font-thin"
 				>
 					Log In
 				</a>

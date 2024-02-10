@@ -10,7 +10,7 @@ import "context"
 import "io"
 import "bytes"
 
-import "github.com/wr125/fullstack/views/layout"
+import "github.com/wr125/ai/views/layout"
 
 func Home(fromProtected bool) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
@@ -30,7 +30,7 @@ func Home(fromProtected bool) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		if !fromProtected {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<hr class=\"my-4 w-4/5 mx-auto opacity-25\"><p class=\"text-base font-thin\">You have an account?</p><footer class=\"flex gap-4 justify-center\"><a hx-swap=\"transition:true\" href=\"/login\" class=\"badge badge-primary px-6 py-4 hover:scale-[1.1] text-lg font-thin\">Log In</a> <a hx-swap=\"transition:true\" href=\"/register\" class=\"badge badge-neutral px-6 py-4 hover:scale-[1.1] text-lg font-thin\">Sign Up</a></footer>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<hr class=\"my-4 w-4/5 mx-auto opacity-25\"><p class=\"text-base font-thin\">You have an account?</p><footer class=\"flex gap-4 justify-center\"><a hx-swap=\"transition:true\" href=\"/login\" class=\"badge badge-neutral px-6 py-4 hover:scale-[1.1] text-lg font-thin\">Log In</a> <a hx-swap=\"transition:true\" href=\"/register\" class=\"badge badge-neutral px-6 py-4 hover:scale-[1.1] text-lg font-thin\">Sign Up</a></footer>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

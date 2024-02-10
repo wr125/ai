@@ -56,8 +56,8 @@ func main() {
 		e.Logger.Fatalf("failed to create store: %s", err)
 	}
 
-	us := services.NewUserServices(services.User{}, store)
-	ah := handlers.NewAuthHandler(us)
+	user := services.NewUserServices(services.User{}, store)
+	ah := handlers.NewAuthHandler(user)
 
 	ts := services.NewTodoServices(services.Todo{}, store)
 	th := handlers.NewTaskHandler(ts)

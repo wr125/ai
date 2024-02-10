@@ -1,4 +1,4 @@
-package todo_views
+package internal_views
 
 import (
 	"strconv"
@@ -15,7 +15,7 @@ templ UpdateTodo(todo services.Todo, tz string) {
 			<label class="flex flex-col justify-start gap-2">
 				Title:
 				<input
- 					class="input input-bordered input-primary bg-slate-800"
+ 					class="input input-bordered input-ghost bg-slate-300"
  					type="text"
  					name="title"
  					value={ todo.Title }
@@ -27,7 +27,7 @@ templ UpdateTodo(todo services.Todo, tz string) {
 			</label>
 			<label class="flex flex-col justify-start gap-2">
 				Description:
-				<textarea class="textarea textarea-neutral h-36 max-h-36 bg-slate-800" name="description" maxlength="255">
+				<textarea class="textarea textarea-neutral h-36 max-h-36 bg-slate-300" name="description" maxlength="255">
 					{ todo.Description }
 				</textarea>
 			</label>
