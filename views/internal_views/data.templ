@@ -2,7 +2,7 @@ package internal_views
 import "github.com/wr125/ai/views/db"
 
 templ Data() {
-	/*<select
+	<select
 		id="CustomerDropdown"
 		label="Select a Company"
 	>
@@ -10,7 +10,7 @@ templ Data() {
 			value={ "value" }
 		></option>
     
-		for i,v := range db.GetUserById() {
+		for i,v := range db.CurrentUser() {
 			<option
 				value={ v.CustomerNo }
 			>
@@ -42,5 +42,5 @@ script attachCustomerDropdownChange() {
       });
   });
 }
-*/
+
 }
