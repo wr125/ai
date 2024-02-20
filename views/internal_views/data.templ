@@ -10,11 +10,11 @@ templ Data() {
 			value={ "value" }
 		></option>
     
-		for i,v := range db.CurrentUser() {
+		for i,v := range db.CurrentUser(2) {
 			<option
-				value={ v.CustomerNo }
+				value={ v.Email }
 			>
-				{ v.CustomerName }
+				{ v.Username }
 			</option>
 		}
 		@attachCustomerDropdownChange()
