@@ -1,46 +1,5 @@
 package internal_views
-import "github.com/wr125/ai/views/db"
 
 templ Data() {
-	<select
-		id="CustomerDropdown"
-		label="Select a Company"
-	>
-		<option
-			value={ "value" }
-		></option>
-    
-		for i,v := range db.CurrentUser(2) {
-			<option
-				value={ v.Email }
-			>
-				{ v.Username }
-			</option>
-		}
-		@attachCustomerDropdownChange()
-	</select>
-}
-
-script attachCustomerDropdownChange() {
-{
-  const select = document.getElementById("CustomerDropdown");
-  if (!(select instanceof HTMLSelectElement)) {
-    return
-  }
-  select.addEventListener("change", function () {
-    select.disabled = true;
-    const selectedCustomer = select.selectedOptions[0].value;
-
-    htmx
-      .ajax("GET", "/OrderForm/api/get/Customer", {
-        swap: "multi:#OrderInfoFormContainer:outerHTML,#CustomerInfoFormContainer:outerHTML",
-        values: { customer: selectedCustomer },
-      })
-      .then(() => {
-        select.disabled = false;
-        select.focus();
-      });
-  });
-}
-
+//dropdown list here of objectA and objectB
 }
